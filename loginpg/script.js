@@ -7,7 +7,7 @@ const signUpForm = document.querySelector('.sign-up-container form');
    const signInPasswordInput = document.querySelector('#password');
    const namesignup = document.querySelector('#name');
    const emailsignup = document.querySelector('#emailSingup');
-const passwordsignup = document.querySelector('#passwordSingup');
+const passwordsignup = document.querySelector('#passwordsignup');
 const signUpBtn = document.querySelector('#signUpbtn');
    
    signUpButton.addEventListener('click', () => {

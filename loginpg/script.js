@@ -6,7 +6,7 @@ const signInForm = document.querySelector('.sign-in-container form');
 const signInEmailInput = document.querySelector('#email');
 const signInPasswordInput = document.querySelector('#password');
 const namesignup = document.querySelector('#name');
-const emailsignup = document.querySelector('#emailSingup');
+const emailsignup = document.querySelector('#emailSignup'); // Corrected here
 const passwordsignup = document.querySelector('#passwordsignup');
 const signUpBtn = document.querySelector('#signUpbtn');
 
@@ -42,35 +42,7 @@ signUpBtn.addEventListener('click', async (e) => {
          alert('Failed to register user: ' + data.message);
       }
    } catch (error) {
-      console.error('Error registering user:', error);
-      alert('Something went wrong during registration. Please try again later.');
-   }
-});
-
-// Functie om gebruiker in te loggen
-signInForm.addEventListener('submit', async (e) => {
-   e.preventDefault();
-   const email = signInEmailInput.value;
-   const password = signInPasswordInput.value;
-
-   try {
-      const response = await fetch('https://project1-qjg6.onrender.com/users/login', {
-         method: 'POST',
-         headers: {
-            'Content-Type': 'application/json'
-         },
-         body: JSON.stringify({ email, password })
-      });
-
-      if (response.ok) {
-         alert('User logged in successfully!');
-      } else {
-         const data = await response.json();
-         alert('Login failed: ' + data.message);
-      }
-   } catch (error) {
-      console.error('Error logging in:', error);
-      alert('Something went wrong during login. Please try again later.');
-      alert('Something went wrong during registration. Please try again later.');
+      console.error('Error:', error);
+      alert('An error occurred while registering the user.');
    }
 });

@@ -18,7 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
    // Functie om gebruiker te registreren
    signUpForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const name = signUpForm.querySelector('input[name="name"]').value;
       const email = signUpForm.querySelector('input[name="email"]').value;
       const password = signUpForm.querySelector('input[name="password"]').value;
 
@@ -28,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
             headers: {
                'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ username: name, email, pwd: password })
+            body: JSON.stringify({ email, pwd: password })
          });
 
          if (response.ok) {
@@ -62,8 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
          if (response.ok) {
             const data = await response.json();
             const token = data.token;
-            // Bewaar token in localStorage of sessionStorage voor verdere authenticatie
-            // Hier kun je doorsturen naar een andere pagina of andere acties uitvoeren na succesvol inloggen
+
             alert('User logged in successfully!');
          } else {
             const data = await response.json();

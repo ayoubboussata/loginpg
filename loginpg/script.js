@@ -1,12 +1,15 @@
-document.addEventListener('DOMContentLoaded', () => {
-   const signUpButton = document.querySelector('#signUp');
-   const signInButton = document.querySelector('#signIn');
-   const container = document.querySelector('#container');
-   const signUpForm = document.querySelector('.sign-up-container form');
+const signUpButton = document.querySelector('#signUp');
+const signInButton = document.querySelector('#signIn');
+const container = document.querySelector('#container');
+const signUpForm = document.querySelector('.sign-up-container form');
    const signInForm = document.querySelector('.sign-in-container form');
    const signInEmailInput = document.querySelector('#email');
    const signInPasswordInput = document.querySelector('#password');
-
+   const namesignup = document.querySelector('#name');
+   const emailsignup = document.querySelector('#emailSingup');
+const passwordsignup = document.querySelector('#passwordSingup');
+const signUpBtn = document.querySelector('#signUpbtn');
+   
    signUpButton.addEventListener('click', () => {
       container.classList.add("right-panel-active");
    });
@@ -72,4 +75,31 @@ document.addEventListener('DOMContentLoaded', () => {
          alert('Something went wrong during login. Please try again later.');
       }
    });
+
+signUpBtn.addEventListener('click', async (e) => {
+   e.preventDefault();
+   const name = namesignup.value;
+   const email = emailsignup.value;
+   const password = passwordsignup.value;
+
+   try {
+      const response = await fetch('https://your-api-url.com/users/add', {
+         method: 'POST',
+         headers: {
+            'Content-Type': 'application/json'
+         },
+         body: JSON.stringify({ username: name, email, pwd: password }) // Zorg ervoor dat je de juiste veldnamen gebruikt
+      });
+
+      if (response.ok) {
+         alert('User registered successfully!');
+         // Hier kun je verdere acties uitvoeren, zoals doorsturen naar een inlogpagina
+      } else {
+         const data = await response.json();
+         alert('Failed to register user: ' + data.message);
+      }
+   } catch (error) {
+      console.error('Error registering user:', error);
+      alert('Something went wrong during registration. Please try again later.');
+   }
 });

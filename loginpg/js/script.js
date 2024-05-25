@@ -1,11 +1,6 @@
 const signUpButton = document.querySelector('#signUp');
 const signInButton = document.querySelector('#signIn');
 const container = document.querySelector('#container');
-const signUpForm = document.querySelector('.sign-up-container form');
-const signInForm = document.querySelector('.sign-in-container form');
-const signInEmailInput = document.querySelector('#email');
-const signInPasswordInput = document.querySelector('#password');
-
 const signUpBtn = document.querySelector('#signUpbtn');
 
 signUpButton.addEventListener('click', () => {
@@ -19,6 +14,7 @@ signInButton.addEventListener('click', () => {
 // Functie om gebruiker te registreren
 signUpBtn.addEventListener('click', async (e) => {
    e.preventDefault();
+
    const nameInput = document.querySelector('#name');
    const emailInput = document.querySelector('#emailSignup');
    const passwordInput = document.querySelector('#passwordSignup');
@@ -33,7 +29,7 @@ signUpBtn.addEventListener('click', async (e) => {
    }
 
    try {
-      // Verzenden van de fetch-aanvraag naar de server
+      console.log('Sending request to server...');
       const response = await fetch('https://project1-qjg6.onrender.com/users/add', {
          method: 'POST',
          headers: {
@@ -42,9 +38,10 @@ signUpBtn.addEventListener('click', async (e) => {
          body: JSON.stringify({ username: name, email: email, pwd: password })
       });
 
+      console.log('Response received:', response);
       if (response.ok) {
          alert('User registered successfully!');
-         nameInput.value = '';
+         nameInput.value = '';  // Leeg de invoervelden
          emailInput.value = '';
          passwordInput.value = '';
          container.classList.remove("right-panel-active");

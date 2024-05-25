@@ -23,6 +23,11 @@ signUpBtn.addEventListener('click', async (e) => {
    const email = document.querySelector('#emailSingup').value;
    const password = document.querySelector('#passwordsingup').value;
 
+   if (!name || !email || !password) {
+      alert('Please fill in all fields.');
+      return;
+   }
+
    try {
       // Verzenden van de fetch-aanvraag naar de server
       const response = await fetch('https://project1-qjg6.onrender.com/users/add', {
@@ -30,7 +35,7 @@ signUpBtn.addEventListener('click', async (e) => {
          headers: {
             'Content-Type': 'application/json'
          },
-         body: JSON.stringify({ username: name, email: email, pwd: password }) // Zorg ervoor dat de velden overeenkomen met wat de server verwacht
+         body: JSON.stringify({ username: name, email: email, pwd: password })
       });
 
       if (response.ok) {

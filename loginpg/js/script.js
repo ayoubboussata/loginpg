@@ -5,9 +5,7 @@ const signUpForm = document.querySelector('.sign-up-container form');
 const signInForm = document.querySelector('.sign-in-container form');
 const signInEmailInput = document.querySelector('#email');
 const signInPasswordInput = document.querySelector('#password');
-const namesignup = document.querySelector('#name');
-const emailsignup = document.querySelector('#emailSignup'); // Corrected here
-const passwordsignup = document.querySelector('#passwordsignup');
+
 const signUpBtn = document.querySelector('#signUpbtn');
 
 signUpButton.addEventListener('click', () => {
@@ -21,11 +19,9 @@ signInButton.addEventListener('click', () => {
 // Functie om gebruiker te registreren
 signUpBtn.addEventListener('click', async (e) => {
    e.preventDefault();
-
-   // Verzamelen van invoervelden, zorg ervoor dat de elementen correct zijn gedefinieerd
-   const name = document.getElementById('name').value;
-   const email = document.getElementById('emailSingup').value;
-   const password = document.getElementById('passwordsingup').value;
+   const name = document.querySelector('#name').value;
+   const email = document.querySelector('#emailSingup').value;
+   const password = document.querySelector('#passwordsingup').value;
 
    try {
       // Verzenden van de fetch-aanvraag naar de server

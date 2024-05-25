@@ -35,7 +35,10 @@ signUpBtn.addEventListener('click', async (e) => {
 
       if (response.ok) {
          alert('User registered successfully!');
-         // Voeg hier extra logica toe zoals het doorsturen naar een andere pagina
+         name.value = '';
+         email.value = '';
+         password.value = '';
+         container.classList.remove("right-panel-active");
       } else {
          const data = await response.json();
          alert('Failed to register user: ' + data.message);

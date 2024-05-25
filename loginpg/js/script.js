@@ -19,9 +19,13 @@ signInButton.addEventListener('click', () => {
 // Functie om gebruiker te registreren
 signUpBtn.addEventListener('click', async (e) => {
    e.preventDefault();
-   const name = document.querySelector('#name').value;
-   const email = document.querySelector('#emailSingup').value;
-   const password = document.querySelector('#passwordsingup').value;
+   const nameInput = document.querySelector('#name');
+   const emailInput = document.querySelector('#emailSignup');
+   const passwordInput = document.querySelector('#passwordSignup');
+
+   const name = nameInput.value;
+   const email = emailInput.value;
+   const password = passwordInput.value;
 
    if (!name || !email || !password) {
       alert('Please fill in all fields.');
@@ -40,9 +44,9 @@ signUpBtn.addEventListener('click', async (e) => {
 
       if (response.ok) {
          alert('User registered successfully!');
-         name = '';
-         email = '';
-         password = '';
+         nameInput.value = '';
+         emailInput.value = '';
+         passwordInput.value = '';
          container.classList.remove("right-panel-active");
       } else {
          const data = await response.json();

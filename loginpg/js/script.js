@@ -21,22 +21,25 @@ signInButton.addEventListener('click', () => {
 // Functie om gebruiker te registreren
 signUpBtn.addEventListener('click', async (e) => {
    e.preventDefault();
-   const name = namesignup.value;
-   const email = emailsignup.value;
-   const password = passwordsignup.value;
+
+   // Verzamelen van invoervelden, zorg ervoor dat de elementen correct zijn gedefinieerd
+   const name = document.getElementById('name').value;
+   const email = document.getElementById('emailSingup').value;
+   const password = document.getElementById('passwordsingup').value;
 
    try {
+      // Verzenden van de fetch-aanvraag naar de server
       const response = await fetch('https://project1-qjg6.onrender.com/users/add', {
          method: 'POST',
          headers: {
             'Content-Type': 'application/json'
          },
-         body: JSON.stringify({ username: name, email, pwd: password })
+         body: JSON.stringify({ username: name, email: email, pwd: password }) // Zorg ervoor dat de velden overeenkomen met wat de server verwacht
       });
 
       if (response.ok) {
          alert('User registered successfully!');
-         // Hier kun je verdere acties uitvoeren, zoals doorsturen naar een inlogpagina
+         // Voeg hier extra logica toe zoals het doorsturen naar een andere pagina
       } else {
          const data = await response.json();
          alert('Failed to register user: ' + data.message);

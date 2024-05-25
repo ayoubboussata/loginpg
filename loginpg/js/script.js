@@ -40,9 +40,9 @@ signUpBtn.addEventListener('click', async (e) => {
 
       if (response.ok) {
          alert('User registered successfully!');
-         name.value = '';
-         email.value = '';
-         password.value = '';
+         name = '';
+         email = '';
+         password = '';
          container.classList.remove("right-panel-active");
       } else {
          const data = await response.json();
